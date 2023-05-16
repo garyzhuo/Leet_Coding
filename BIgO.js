@@ -69,7 +69,7 @@ function logItems(n) {
 
 /* Drop Non Dominants */
 /* this is a nested for loop, we're adding another for loop after the nested for loop */
-
+/*----------------------------------------------------------*/
 
 function logItems(n) {
     // this is O(n2)
@@ -86,4 +86,15 @@ function logItems(n) {
 // if you add these together this would be called
 // O (n2 + n) but we would drop the non dominant, which is the n
 // n squared is the dominant term, n by itself is the non dominant term, so we would drop it
-logItems(10)
+// logItems(10)
+
+
+/* O of 1 , Otherwise known as O(1) OR CONSTANT TIME 
+THIS IS THE MOST EFFIENCT BIG O 
+NOTHING IS MORE EFFIECNT OF O OF 1, OR CONSTANT TIME */
+/*----------------------------------------------------------*/
+
+function addItems(n) {
+    return n + n
+}
+// this is O(1) because it doesnt matter how big n is, it will always be 1 operation
