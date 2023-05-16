@@ -133,7 +133,3 @@ function logItems(a, b) {
     }                                      // O (a + b) is as far as you can simplify this
 }                                          // if this were a NESTED for loop, it would be O(a * b)
 
-
-
-/* BIG O ON ARRAYS */
-my
