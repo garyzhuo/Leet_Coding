@@ -118,3 +118,22 @@ or if we take the number 1, 073, 741, 824 and repeatedly cut it in half by 2, we
 
 log2(1, 000, 000) = 20 /* 20 because 2 to the 20th power is 1,000,000, 
 or if we take the number 1,000,000 and repeatedly cut it in half by 2, we would get 20 */
+
+
+/* TRICK INTERVIEW QUESTION ON BIG O 
+This would be considered O(n2), but interviewers like to trick and use 2 variables, like a and b 
+*/
+
+function logItems(a, b) {
+    for (let i = 0; i < a; i++) {         // you could say this is O(a)
+        console.log(i)
+    }                                          // + 
+    for (let j = 0; j < b; j++) {          // you could say this is O(b)
+        console.log(j)
+    }                                      // O (a + b) is as far as you can simplify this
+}                                          // if this were a NESTED for loop, it would be O(a * b)
+
+
+
+/* BIG O ON ARRAYS */
+my
