@@ -1,6 +1,6 @@
 ## LEET CODING
 
-#LET'S CODE TOGETHER
+# LET'S CODE TOGETHER
 
 In this repo, this will strictly be leet code questions / solutions. 
 
