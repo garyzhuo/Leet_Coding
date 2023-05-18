@@ -1,4 +1,5 @@
-/* Interview Question - Has Loop */
+/* Find Kth Node From End */
+
 class Node {
     constructor(value) {
         this.value = value;
@@ -10,8 +11,7 @@ class LinkedList {
     constructor(value) {
         const newNode = new Node(value);
         this.head = newNode;
-        this.tail = newNode;
-        this.length = 1;
+        this.tail = this.head;
     }
 
     printList() {
@@ -38,10 +38,6 @@ class LinkedList {
         }
     }
 
-    getLength() {
-        console.log("Length: " + this.length);
-    }
-
     makeEmpty() {
         this.head = null;
         this.tail = null;
@@ -57,29 +53,34 @@ class LinkedList {
             this.tail.next = newNode;
             this.tail = newNode;
         }
-        this.length++;
     }
 
-    // WRITE HAS LOOP METHOD HERE // 
-    hasLoop() {
+    // WRITE THE FINDKTFROMEND METHOD HERE // 
+    findKthFromEnd(k) {
         // Initialize slow and fast pointers at head
         let slow = this.head;
         let fast = this.head;
-        // Iterate through the list
-        while (fast !== null && fast.next !== null) {
-            // Move slow pointer one step
-            slow = slow.next;
-            // Move fast pointer two steps
-            fast = fast.next.next;
-            // If slow and fast pointers meet, loop exists
-            if (slow === fast) {
-                return true;
+
+        // Move fast pointer k steps ahead
+        for (let i = 0; i < k; ++i) {
+            // If fast reaches null, k is out of range
+            if (fast === null) {
+                return null;
             }
+            fast = fast.next;
         }
-        // If no loop is found, return false
-        return false;
+
+        // Iterate until fast reaches the end
+        while (fast !== null) {
+            // Move slow and fast pointers one step
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        // When fast reaches end, slow is at kth from end
+        return slow;
     }
-}
+
 
 let myLinkedList = new LinkedList(1);
 myLinkedList.push(2);
@@ -90,14 +91,15 @@ myLinkedList.push(5);
 console.log("Original list:");
 myLinkedList.printList();
 
-const hasLoopResult = myLinkedList.hasLoop();
-console.log(`\nHas loop? ${hasLoopResult}`);
+const k = 2;
+const kthNodeFromEnd = myLinkedList.findKthFromEnd(k);
 
-// Create a loop for testing purposes
-myLinkedList.tail.next = myLinkedList.head.next; // Create a loop by linking tail to the second node
-
-const hasLoopResultAfterLoop = myLinkedList.hasLoop();
-console.log(`\nHas loop after creating a loop? ${hasLoopResultAfterLoop}`);
+console.log(`\n${k}th node from the end:`);
+if (kthNodeFromEnd) {
+    console.log(kthNodeFromEnd.value);
+} else {
+    console.log("Not found");
+}
 
 
 /*
@@ -109,6 +111,6 @@ console.log(`\nHas loop after creating a loop? ${hasLoopResultAfterLoop}`);
     3
     4
     5
-    Has loop? false
-    Has loop after creating a loop? true
+    2th node from the end:
+    4
 */
