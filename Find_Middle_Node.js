@@ -56,13 +56,13 @@ class LinkedList {
 
     // the find middle node solution would be here!
     findMiddleNode() {
-        let temp = this.head;
-        let pre = this.head;
-        while (pre !== null && pre.next !== null) {
-            temp = temp.next;
-            pre = temp.next.next;
+        let slow = this.head;
+        let fast = this.head;
+        while (fast !== null && fast.next !== null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        return temp
+        return slow
     }
 }
 
@@ -114,3 +114,7 @@ console.log(`\nMiddle node value of list 2: ${middleNode2.value}`);
     6
     Middle node value of list 2: 4
 */
+
+
+
+
