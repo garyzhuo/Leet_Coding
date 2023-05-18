@@ -80,7 +80,7 @@ class LinkedList {
         // When fast reaches end, slow is at kth from end
         return slow;
     }
-
+}
 
 let myLinkedList = new LinkedList(1);
 myLinkedList.push(2);
