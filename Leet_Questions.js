@@ -1,4 +1,3 @@
-/* Remove Duplicate */
 class Node {
     constructor(value) {
         this.value = value;
@@ -51,72 +50,65 @@ class LinkedList {
         }
         this.length++;
     }
-
-    // WRITE THE REMOVEDUPLICATES METHOD HERE // 
-    removeDuplicates() {
-        // Create a Set to store unique values
-        const values = new Set();
-        // Initialize previous pointer as null
-        let previous = null;
-        // Initialize current pointer at head
-        let current = this.head;
-
-        // Iterate through the list
+    partitionList(x) {
+        if (this.head === null) return;
+        const dummy1 = new Node(0)
+        const dummy2 = new Node(0)
+        let prev1 = dummy1
+        let prev2 = dummy2
+        let current = this.head
         while (current !== null) {
-            // If value already exists in the set
-            if (values.has(current.value)) {
-                // Remove the duplicate node by updating previous' next
-                previous.next = current.next;
-                // Decrement list length
-                this.length -= 1;
+            if (current.value < x) {
+                prev1.next = current
+                prev1 = current
             } else {
-                // Add unique value to the set
-                values.add(current.value);
-                // Update previous pointer to current node
-                previous = current;
+                prev2.next = current
+                prev2 = current
             }
-            // Move current pointer to the next node
-            current = current.next;
+            current = current.next
         }
+        prev2.next = null
+        prev1.next = dummy2.next
+        this.head = dummy1.next
     }
+}
 
 
-
-let myLinkedList = new LinkedList(1);
+let myLinkedList = new LinkedList(3);
+myLinkedList.push(5);
+myLinkedList.push(8);
+myLinkedList.push(5);
+myLinkedList.push(10);
 myLinkedList.push(2);
-myLinkedList.push(3);
-myLinkedList.push(3);
-myLinkedList.push(4);
-myLinkedList.push(5);
-myLinkedList.push(5);
-
+myLinkedList.push(1);
 
 console.log("Original list:");
 myLinkedList.printList();
 
-myLinkedList.removeDuplicates();
+const partitionValue = 5;
+myLinkedList.partitionList(partitionValue);
 
-console.log("\nList after removing duplicates:");
+console.log(`\nList after partitioning around ${partitionValue}:`);
 myLinkedList.printList();
-
 
 
 /*
     EXPECTED OUTPUT:
     ----------------
     Original list:
-    1
+    3
+    5
+    8
+    5
+    10
     2
-    3
-    3
-    4
-    5
-    5
-    List after removing duplicates:
     1
-    2
+    List after partitioning around 5:
     3
-    4
+    2
+    1
     5
-
+    8
+    5
+    10
 */
