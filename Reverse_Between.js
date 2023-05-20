@@ -56,17 +56,14 @@ class LinkedList {
     reverseBetween(m, n) {
         // If the list is empty, do nothing
         if (this.head === null) return;
-
         // Create a dummy node and set its next to head
         const dummy = new Node(0);
         dummy.next = this.head;
         let prev = dummy;
-
         // Move prev to (m-1)th node
         for (let i = 0; i < m - 1; i++) {
             prev = prev.next;
         }
-
         // Set current as the mth node
         let current = prev.next;
         // Reverse the sublist from m to n
@@ -80,7 +77,6 @@ class LinkedList {
             // Update prev's next to temp
             prev.next = temp;
         }
-
         // Update head of the list
         this.head = dummy.next;
     }
