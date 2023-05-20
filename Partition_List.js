@@ -55,29 +55,42 @@ class LinkedList {
 
     // WRITE THE PARTITIONLIST METHOD HERE // 
     partitionList(x) {
+        // If the list is empty, do nothing
         if (this.head === null) return;
+
+        // Create dummy nodes for two sublists
         const dummy1 = new Node(0);
         const dummy2 = new Node(0);
+        // Initialize prev pointers for sublists
         let prev1 = dummy1;
         let prev2 = dummy2;
+        // Initialize current pointer at head
         let current = this.head;
 
+        // Iterate through the list
         while (current !== null) {
+            // If current value is less than x
             if (current.value < x) {
+                // Add current node to the first sublist
                 prev1.next = current;
                 prev1 = current;
             } else {
+                // Add current node to the second sublist
                 prev2.next = current;
                 prev2 = current;
             }
-            current = current.next
+            // Move current pointer to the next node
+            current = current.next;
         }
+
+        // Terminate the second sublist
         prev2.next = null;
+        // Merge the sublists
         prev1.next = dummy2.next;
 
+        // Update the head of the list
         this.head = dummy1.next;
     }
-
 }
 
 
