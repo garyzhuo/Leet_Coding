@@ -60,7 +60,6 @@ class LinkedList {
         let previous = null;
         // Initialize current pointer at head
         let current = this.head;
-
         // Iterate through the list
         while (current !== null) {
             // If value already exists in the set
@@ -79,6 +78,7 @@ class LinkedList {
             current = current.next;
         }
     }
+}
 
 
 
