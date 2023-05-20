@@ -60,7 +60,6 @@ class LinkedList {
         // Initialize slow and fast pointers at head
         let slow = this.head;
         let fast = this.head;
-
         // Move fast pointer k steps ahead
         for (let i = 0; i < k; ++i) {
             // If fast reaches null, k is out of range
@@ -69,14 +68,12 @@ class LinkedList {
             }
             fast = fast.next;
         }
-
         // Iterate until fast reaches the end
         while (fast !== null) {
             // Move slow and fast pointers one step
             slow = slow.next;
             fast = fast.next;
         }
-
         // When fast reaches end, slow is at kth from end
         return slow;
     }
