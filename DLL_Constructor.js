@@ -21,7 +21,7 @@ class Node {
     }
 }
 
-class DoublyLinkedList {}
+class DoublyLinkedList {  
 constructor(value) {
 const newNode = new Node(value)
 this.head = newNode
@@ -30,5 +30,8 @@ this.length = 1
 }
 }
 
+
+once again the only difference would be instead of a single linked list going -->
+this would going <-- and -->
 when this node is created it will have a next and prev 
 */
