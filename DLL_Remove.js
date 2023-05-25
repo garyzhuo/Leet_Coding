@@ -14,6 +14,9 @@ remove (index) {
 
     temp.next = null
     temp.prev = null
+
+    this.length --
+    return this
 }
 
 */
